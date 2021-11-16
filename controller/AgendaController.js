@@ -1,5 +1,5 @@
 const knex = require('../database/database');
-
+const axios = require('axios');
 
 class AgendaController{
 
@@ -7,6 +7,7 @@ class AgendaController{
      
     try {
       let result = await knex('agenda').select()
+
       res.json({result})
 
     } catch (error) {
@@ -23,11 +24,20 @@ class AgendaController{
          } = req.body
        
          try {
-             let result = await knex.insert({medico_crm,
+              let result =  await knex.insert({medico_crm,
                 paciente_cpf_paciente,
                 especialidade_medico,
                 data_consulta}).into('agenda')
-
+              
+                // CHAMADA PARA BARRAMENTO DE EVENTOS 
+                await axios({
+                    url: 'http://localhost:4000/eventos',
+                    method: 'post', 
+                    data: {
+                        id_agenda : 564 
+                    }
+                })
+            
                 res.json({"Result": "Agenda Criada"})
          } catch (error) {
              console.log(error)

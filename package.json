@@ -12,15 +12,16 @@
     "url": "git+https://github.com/sillasgoes/projetosistemas.git"
   },
   "author": "Grupo 02",
-  "license": "ISC", 
+  "license": "ISC",
   "bugs": {
     "url": "https://github.com/sillasgoes/projetosistemas/issues"
   },
   "homepage": "https://github.com/sillasgoes/projetosistemas#readme",
   "dependencies": {
+    "axios": "^0.23.0",
     "express": "^4.17.1",
     "knex": "^0.95.11",
-    "mysql2": "^2.3.0", 
-    "nodemon": "^2.0.13"
+    "mysql2": "^2.3.0",
+    "nodemon": "^2.0.14"
   }
 }
